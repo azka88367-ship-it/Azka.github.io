@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistik - Bucket Management System</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="brand-text">Bucket<span>Dashboard</span></div>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <div class="menu-section">
+                <span class="menu-section-title">Menu Utama</span>
+                <a href="dashboard.html">
+                    <i class="fas fa-th-large"></i>
+                    Dashboard
+                </a>
+                <a href="bucket-list.html">
+                    <i class="fas fa-list-alt"></i>
+                    Bucket List
+                    <span class="badge">12</span>
+                </a>
+                <a href="statistik.html" class="active">
+                    <i class="fas fa-chart-bar"></i>
+                    Statistik
+                </a>
+                <a href="activity-log.html">
+                    <i class="fas fa-history"></i>
+                    Activity Log
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Pengaturan</span>
+                <a href="user.html">
+                    <i class="fas fa-users"></i>
+                    User
+                </a>
+                <a href="documentation.html">
+                    <i class="fas fa-book"></i>
+                    Documentation
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Aksi</span>
+                <a href="login.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Statistik</h1>
+            </div>
+            
+            <div class="header-right">
+                <button class="header-icon-btn notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge-dot"></span>
+                </button>
+                
+                <div class="dropdown">
+                    <div class="user-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=e91e8c&color=fff&bold=true" alt="User">
+                        <div class="user-info">
+                            <div class="user-name">Admin User</div>
+                            <div class="user-role">Administrator</div>
+                        </div>
+                        <i class="fas fa-chevron-down ms-2"></i>
+                    </div>
+                    
+                    <ul class="dropdown-menu profile-dropdown">
+                        <li><a class="dropdown-item" href="user.html"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Stats Summary -->
+            <div class="stats-grid stagger-animation mb-4">
+                <div class="stat-card animate-fade-in delay-1">
+                    <div class="stat-icon pink">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="stat-value">156</div>
+                    <div class="stat-label">Total Bucket</div>
+                </div>
+                
+                <div class="stat-card animate-fade-in delay-2">
+                    <div class="stat-icon green">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-value">89</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                
+                <div class="stat-card animate-fade-in delay-3">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <div class="stat-value">45</div>
+                    <div class="stat-label">In Progress</div>
+                </div>
+                
+                <div class="stat-card animate-fade-in delay-4">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-value">57%</div>
+                    <div class="stat-label">Completion Rate</div>
+                </div>
+            </div>
+            
+            <!-- Charts Row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="chart-section animate-fade-in">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-chart-line me-2"></i>Bucket Progress Over Time</h3>
+                        </div>
+                        <div class="chart-container" style="height: 350px;">
+                            <canvas id="progressOverTimeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="chart-section animate-fade-in">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-chart-pie me-2"></i>Status Distribution</h3>
+                        </div>
+                        <div class="chart-container" style="height: 250px;">
+                            <canvas id="statusPieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Category & Priority Charts -->
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <div class="chart-section animate-fade-in">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-tags me-2"></i>Bucket by Category</h3>
+                        </div>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="chart-section animate-fade-in">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-flag me-2"></i>Bucket by Priority</h3>
+                        </div>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="priorityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Monthly Stats -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="chart-section animate-fade-in">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-calendar-alt me-2"></i>Monthly Performance</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Bulan</th>
+                                        <th>Total</th>
+                                        <th>Completed</th>
+                                        <th>Active</th>
+                                        <th>Pending</th>
+                                        <th>Completion Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Januari 2026</td>
+                                        <td>45</td>
+                                        <td>32</td>
+                                        <td>10</td>
+                                        <td>3</td>
+                                        <td><span class="badge bg-success">71%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desember 2025</td>
+                                        <td>38</td>
+                                        <td>28</td>
+                                        <td>7</td>
+                                        <td>3</td>
+                                        <td><span class="badge bg-success">74%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>November 2025</td>
+                                        <td>42</td>
+                                        <td>30</td>
+                                        <td>8</td>
+                                        <td>4</td>
+                                        <td><span class="badge bg-success">71%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Oktober 2025</td>
+                                        <td>35</td>
+                                        <td>25</td>
+                                        <td>6</td>
+                                        <td>4</td>
+                                        <td><span class="badge bg-success">71%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Copyright © 2026 <span>Bucket Dashboard</span>. All rights reserved.</p>
+        </footer>
+    </main>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="../../bs/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script src="js/script.js"></script>
+
+<script>
+    // Initialize charts
+    document.addEventListener('DOMContentLoaded', function() {
+        // Progress Over Time Chart
+        const progressCtx = document.getElementById('progressOverTimeChart').getContext('2d');
+        new Chart(progressCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Completed',
+                    data: [12, 19, 25, 32, 40, 48, 55, 62, 70, 78, 85, 89],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Active',
+                    data: [8, 10, 12, 15, 18, 22, 25, 28, 32, 35, 40, 45],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Pending',
+                    data: [5, 6, 8, 10, 12, 15, 18, 20, 22, 24, 26, 22],
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+        
+        // Status Pie Chart
+        const statusCtx = document.getElementById('statusPieChart').getContext('2d');
+        new Chart(statusCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Completed', 'Active', 'Pending'],
+                datasets: [{
+                    data: [89, 45, 22],
+                    backgroundColor: ['#10b981', '#3b82f6', '#f59e0b'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+        
+        // Category Bar Chart
+        const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+        new Chart(categoryCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Project', 'Learning', 'Challenge', 'Maintenance', 'Dokumentasi'],
+                datasets: [{
+                    label: 'Jumlah Bucket',
+                    data: [45, 35, 25, 30, 21],
+                    backgroundColor: [
+                        '#e91e8c',
+                        '#f06292',
+                        '#f48fb1',
+                        '#f8bbd0',
+                        '#fce4ec'
+                    ],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+        
+        // Priority Chart
+        const priorityCtx = document.getElementById('priorityChart').getContext('2d');
+        new Chart(priorityCtx, {
+            type: 'polarArea',
+            data: {
+                labels: ['Tinggi', 'Sedang', 'Rendah'],
+                datasets: [{
+                    data: [45, 70, 41],
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(16, 185, 129, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

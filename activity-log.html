@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Log - Bucket Management System</title>
+    
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="brand-text">Bucket<span>Dashboard</span></div>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <div class="menu-section">
+                <span class="menu-section-title">Menu Utama</span>
+                <a href="dashboard.html">
+                    <i class="fas fa-th-large"></i>
+                    Dashboard
+                </a>
+                <a href="bucket-list.html">
+                    <i class="fas fa-list-alt"></i>
+                    Bucket List
+                    <span class="badge">12</span>
+                </a>
+                <a href="statistik.html">
+                    <i class="fas fa-chart-bar"></i>
+                    Statistik
+                </a>
+                <a href="activity-log.html" class="active">
+                    <i class="fas fa-history"></i>
+                    Activity Log
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Pengaturan</span>
+                <a href="user.html">
+                    <i class="fas fa-users"></i>
+                    User
+                </a>
+                <a href="documentation.html">
+                    <i class="fas fa-book"></i>
+                    Documentation
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Aksi</span>
+                <a href="login.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Activity Log</h1>
+            </div>
+            
+            <div class="header-right">
+                <button class="header-icon-btn notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge-dot"></span>
+                </button>
+                
+                <div class="dropdown">
+                    <div class="user-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=e91e8c&color=fff&bold=true" alt="User">
+                        <div class="user-info">
+                            <div class="user-name">Admin User</div>
+                            <div class="user-role">Administrator</div>
+                        </div>
+                        <i class="fas fa-chevron-down ms-2"></i>
+                    </div>
+                    
+                    <ul class="dropdown-menu profile-dropdown">
+                        <li><a class="dropdown-item" href="user.html"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Filter Section -->
+            <div class="chart-section animate-fade-in mb-4">
+                <div class="chart-header">
+                    <h3><i class="fas fa-filter me-2"></i>Filter Aktivitas</h3>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option selected>Semua Tipe</option>
+                            <option value="1">Bucket Created</option>
+                            <option value="2">Bucket Updated</option>
+                            <option value="3">Bucket Deleted</option>
+                            <option value="4">Bucket Completed</option>
+                            <option value="5">User Activity</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option selected>Semua User</option>
+                            <option value="1">Admin User</option>
+                            <option value="2">John Doe</option>
+                            <option value="3">Jane Smith</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary w-100">
+                            <i class="fas fa-search"></i> Filter
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Activity Timeline -->
+            <div class="activity-section animate-fade-in">
+                <div class="chart-header mb-4">
+                    <h3><i class="fas fa-history me-2"></i>Riwayat Aktivitas</h3>
+                </div>
+                
+                <div class="activity-timeline">
+                    <!-- Today -->
+                    <div class="timeline-date">Hari Ini</div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon create">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Bucket baru <span>"Project Mobile App Development"</span> telah ditambahkan oleh <strong>Admin User</strong></p>
+                            <div class="activity-time">2 menit yang lalu</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon update">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Bucket <span>"Belajar React Native"</span> telah diperbarui - mengubah prioritas ke Tinggi</p>
+                            <div class="activity-time">15 menit yang lalu</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon create">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Bucket <span>"Coding Challenge #5"</span> telah diselesaikan</p>
+                            <div class="activity-time">1 jam yang lalu</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon delete">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Bucket <span>"Tugas Kuliah Semester"</span> telah dihapus</p>
+                            <div class="activity-time">3 jam yang lalu</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Yesterday -->
+                    <div class="timeline-date">Kemarin</div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon update">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>User baru <strong>Jane Smith</strong> telah ditambahkan ke sistem</p>
+                            <div class="activity-time">Kemarin, 10:30</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon create">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Bucket baru <span>"Setup CI/CD Pipeline"</span> telah ditambahkan</p>
+                            <div class="activity-time">Kemarin, 09:15</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon update">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Bucket <span>"API Integration"</span> status diubah ke Active</p>
+                            <div class="activity-time">Kemarin, 08:45</div>
+                        </div>
+                    </div>
+                    
+                    <!-- This Week -->
+                    <div class="timeline-date">Minggu Ini</div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon create">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Bucket <span>"Belajar Docker"</span> telah diselesaikan</p>
+                            <div class="activity-time">3 hari yang lalu</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon create">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Bucket <span>"Database Optimization"</span> ditandai dengan prioritas Tinggi</p>
+                            <div class="activity-time">4 hari yang lalu</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon update">
+                            <i class="fas fa-share"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Bucket <span>"Project Website Redesign"</span> di-assign ke <strong>John Doe</strong></p>
+                            <div class="activity-time">5 hari yang lalu</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Load More -->
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary" id="loadMoreBtn">
+                        <i class="fas fa-sync-alt"></i> Muat Lebih Banyak
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Copyright © 2026 <span>Bucket Dashboard</span>. All rights reserved.</p>
+        </footer>
+    </main>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="../../bs/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User - Bucket Management System</title>
+    
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="brand-text">Bucket<span>Dashboard</span></div>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <div class="menu-section">
+                <span class="menu-section-title">Menu Utama</span>
+                <a href="dashboard.html">
+                    <i class="fas fa-th-large"></i>
+                    Dashboard
+                </a>
+                <a href="bucket-list.html">
+                    <i class="fas fa-list-alt"></i>
+                    Bucket List
+                    <span class="badge">12</span>
+                </a>
+                <a href="statistik.html">
+                    <i class="fas fa-chart-bar"></i>
+                    Statistik
+                </a>
+                <a href="activity-log.html">
+                    <i class="fas fa-history"></i>
+                    Activity Log
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Pengaturan</span>
+                <a href="user.html" class="active">
+                    <i class="fas fa-users"></i>
+                    User
+                </a>
+                <a href="documentation.html">
+                    <i class="fas fa-book"></i>
+                    Documentation
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Aksi</span>
+                <a href="login.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">User Management</h1>
+            </div>
+            
+            <div class="header-right">
+                <button class="header-icon-btn notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge-dot"></span>
+                </button>
+                
+                <div class="dropdown">
+                    <div class="user-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=e91e8c&color=fff&bold=true" alt="User">
+                        <div class="user-info">
+                            <div class="user-name">Admin User</div>
+                            <div class="user-role">Administrator</div>
+                        </div>
+                        <i class="fas fa-chevron-down ms-2"></i>
+                    </div>
+                    
+                    <ul class="dropdown-menu profile-dropdown">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- User Stats -->
+            <div class="stats-grid stagger-animation mb-4">
+                <div class="stat-card animate-fade-in delay-1">
+                    <div class="stat-icon pink">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-value">24</div>
+                    <div class="stat-label">Total User</div>
+                </div>
+                
+                <div class="stat-card animate-fade-in delay-2">
+                    <div class="stat-icon green">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stat-value">20</div>
+                    <div class="stat-label">Active User</div>
+                </div>
+                
+                <div class="stat-card animate-fade-in delay-3">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                
+                <div class="stat-card animate-fade-in delay-4">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Admin</div>
+                </div>
+            </div>
+            
+            <!-- User Table -->
+            <div class="data-table-container animate-fade-in">
+                <div class="table-header">
+                    <h3><i class="fas fa-users me-2"></i>Daftar User</h3>
+                    <div class="table-actions d-flex gap-2">
+                        <div class="search-box">
+                            <input type="text" class="form-control" placeholder="Cari user...">
+                        </div>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Tambah User
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Foto</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Bergabung</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><img src="https://ui-avatars.com/api/?name=Admin+User&background=e91e8c&color=fff" class="rounded-circle" width="40" height="40"></td>
+                                <td><strong>Admin User</strong></td>
+                                <td>admin@bucket.id</td>
+                                <td><span class="badge bg-danger">Admin</span></td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>01 Jan 2025</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-action view" title="Lihat"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-action edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff" class="rounded-circle" width="40" height="40"></td>
+                                <td><strong>John Doe</strong></td>
+                                <td>john.doe@bucket.id</td>
+                                <td><span class="badge bg-primary">User</span></td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>15 Feb 2025</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-action view" title="Lihat"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-action edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-action delete" title="Hapus"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><img src="https://ui-avatars.com/api/?name=Jane+Smith&background=10b981&color=fff" class="rounded-circle" width="40" height="40"></td>
+                                <td><strong>Jane Smith</strong></td>
+                                <td>jane.smith@bucket.id</td>
+                                <td><span class="badge bg-primary">User</span></td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>20 Mar 2025</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-action view" title="Lihat"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-action edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-action delete" title="Hapus"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=f59e0b&color=fff" class="rounded-circle" width="40" height="40"></td>
+                                <td><strong>Budi Santoso</strong></td>
+                                <td>budi.s@bucket.id</td>
+                                <td><span class="badge bg-info">Manager</span></td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>10 Apr 2025</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-action view" title="Lihat"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-action edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-action delete" title="Hapus"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=8b5cf6&color=fff" class="rounded-circle" width="40" height="40"></td>
+                                <td><strong>Siti Aminah</strong></td>
+                                <td>siti.a@bucket.id</td>
+                                <td><span class="badge bg-primary">User</span></td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td>05 Mei 2025</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-action view" title="Lihat"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-action edit" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-action delete" title="Hapus"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Copyright © 2026 <span>Bucket Dashboard</span>. All rights reserved.</p>
+        </footer>
+    </main>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="../../bs/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
